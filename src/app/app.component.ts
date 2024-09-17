@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import {User} from './Shared/Modules/user';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +10,14 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Krishna-Pabbaraju-Learning-Angular';
+  title = 'User Details';
 
   // Two new variables with types
-  userName: string = 'Krishna Pabbaraju';
-  userMarks: number = 100;
+  User1: User = {
+    id : 1,
+    firstName: 'Krishna',
+    lastName: 'Pabbaraju',
+    isAdmin: true,
+    email: 'w0866008@myscc.ca'
+  }
 }
