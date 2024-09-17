@@ -1,10 +1,11 @@
 <div class="container">
-  <h2>User List</h2>
+  <h2>My Third Semesters Progress</h2>
   <div *ngFor="let user of userList" class="user-card">
-    <h3>{{ user.firstName }} {{ user.lastName }}</h3>
+    <h3>{{ user.instructorName }} </h3>
     <p>ID: {{ user.id }}</p>
     <p>Email: {{ user.email }}</p>
     <p>Admin: {{ user.isAdmin ? 'Yes' : 'No' }}</p>
+    <p>Admin: {{ user.marks }}</p>
 
     <!-- button to toggle admin status -->
     <button (click)="toggleAdminStatus(user)"class="toggle-button">

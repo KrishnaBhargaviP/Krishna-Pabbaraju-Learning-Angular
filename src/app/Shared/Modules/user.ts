@@ -1,9 +1,10 @@
 export interface User {
   id: number;
-  firstName: string;
-  lastName: string;
+  subjectCode: string;
+  instructorName: string;
   isAdmin?: boolean;
   email: string;
+  marks: number;
 }
 
 
