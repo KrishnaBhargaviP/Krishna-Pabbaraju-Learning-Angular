@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {User} from './Shared/Modules/user';
+import { JsonPipe, NgForOf } from '@angular/common';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, NgForOf],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -52,4 +54,12 @@ export class AppComponent {
         isAdmin: false,
         email: 'testmail6@myscc.ca'}
       ];
+
+
+    //Function that gets called from our onclick. Takes in an
+    //argument of a variable called user, which is type User and returns void
+    toggleAdminStatus(user: User): void {
+      user.isAdmin = !user.isAdmin;
+    }
+
 }
