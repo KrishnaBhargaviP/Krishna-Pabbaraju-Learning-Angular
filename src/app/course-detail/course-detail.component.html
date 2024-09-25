@@ -1,6 +1,7 @@
 <div style="border: 2px solid #000; padding: 10px; margin: 10px;">
-  <h2>{{ course.subjectCode }}</h2>
-  <p> {{ course.instructorName }}</p>
-  <p> {{ course.email }}</p>
+  <h2>{{ course.subjectCode }} - {{ course.instructorName }}</h2>
+  <p><strong>Email:</strong> {{ course.email }}</p>
+  <p><strong>Marks:</strong> {{ course.marks }}</p>
+  <p><strong>Admin:</strong> {{ course.isAdmin ? 'Yes' : 'No' }}</p>
   <img [src] = "course.imageURL" alt="{{ course.title}} image">
 </div>
