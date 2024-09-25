@@ -5,4 +5,4 @@
 <!--<app-course-detail [course]="courses[4]"></app-course-detail>-->
 <!--<app-course-detail [course]="courses[5]"></app-course-detail>-->
 
-<app-course-detail *ngFor="let course of courses" [course]="course"></app-course-detail>
+<app-course-detail *ngFor="let course of courses; let i = index" [course]="course" [ngClass]="{'even-item':i%2 === 0, 'odd-item': i % 2 !== 0}"></app-course-detail>
