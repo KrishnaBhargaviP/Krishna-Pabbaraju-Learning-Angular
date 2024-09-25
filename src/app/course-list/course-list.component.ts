@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import {CourseDetailComponent} from "../course-detail/course-detail.component";
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-course-list',
   standalone: true,
   imports: [
-    CourseDetailComponent
+    CourseDetailComponent,
+    NgForOf
   ],
   templateUrl: './course-list.component.html',
   styleUrl: './course-list.component.css'
