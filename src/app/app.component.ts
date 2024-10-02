@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {JsonPipe, NgForOf} from "@angular/common";
 import {CourseListComponent} from "./course-list/course-list.component";
+import {courses} from "./Shared/Modules/mockCourse.data";
 
 @Component({
   selector: 'app-root',
@@ -12,4 +13,5 @@ import {CourseListComponent} from "./course-list/course-list.component";
 })
 export class AppComponent {
   title= 'Course Progress of Student';
+  protected readonly courses = courses;
 }

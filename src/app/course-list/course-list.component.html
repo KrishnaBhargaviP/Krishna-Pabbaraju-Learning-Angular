@@ -5,4 +5,15 @@
 <!--<app-course-detail [course]="courses[4]"></app-course-detail>-->
 <!--<app-course-detail [course]="courses[5]"></app-course-detail>-->
 
-<app-course-detail *ngFor="let course of courses; let i = index" [course]="course" [ngClass]="{'even-item':i%2 === 0, 'odd-item': i % 2 !== 0}"></app-course-detail>
+<!--<app-course-detail *ngFor="let course of courses; let i = index" [course]="course" [ngClass]="{'even-item':i%2 === 0, 'odd-item': i % 2 !== 0}"></app-course-detail>-->
+
+
+ List of courses
+<div *ngFor="let course of courses">
+  <div (click)="onCourseClick(course.id)" [ngClass]="{'even-item': course.id % 2 === 0, 'odd-item': course.id % 2 !== 0}">
+    {{ course.subjectCode }} - {{ course.instructorName }}
+  </div>
+</div>
+
+<!-- Selected course details -->
+<app-course-detail [course]="selectedItem"></app-course-detail>
