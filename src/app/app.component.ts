@@ -1,20 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { CourseService } from './services/course.service';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import {JsonPipe, NgForOf} from "@angular/common";
+import {CourseListComponent} from "./course-list/course-list.component";
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
   standalone: true,
-  styleUrls: ['./app.component.css']
+  imports: [RouterOutlet, NgForOf, JsonPipe, CourseListComponent],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit {
-  selectedItem: any;
-
-  constructor(private courseService: CourseService) {}
-
-  ngOnInit(): void {
-    this.courseService.getCourseById(1).subscribe(data => {
-      this.selectedItem = data;
-    });
-  }
+export class AppComponent {
+  title= 'Course Progress of Student';
 }
