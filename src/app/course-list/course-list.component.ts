@@ -1,9 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core'; // Assuming Course model exists
-import {NgClass, NgForOf} from '@angular/common';
-import { CourseDetailComponent } from '../course-detail/course-detail.component';  // Detail component for course
+import { Component, Input, OnInit } from '@angular/core';
+import {NgClass, NgForOf, NgIf} from '@angular/common';
+import { CourseDetailComponent } from '../course-detail/course-detail.component';
 import { CourseService } from '../services/course.service';
-import {User} from "../models/user";
-import {courses} from "../Shared/Modules/mockCourse.data";  // Service to fetch courses
+import { User } from "../models/user";
+import { courses } from "../Shared/Modules/mockCourse.data";  // Mock data for courses
 
 @Component({
   selector: 'app-course-list',
@@ -11,10 +11,11 @@ import {courses} from "../Shared/Modules/mockCourse.data";  // Service to fetch 
   imports: [
     NgForOf,
     CourseDetailComponent,
-    NgClass
+    NgClass,
+    NgIf
   ],
   templateUrl: './course-list.component.html',
-  styleUrl: './course-list.component.css'
+  styleUrls: ['./course-list.component.css']  // Corrected to 'styleUrls'
 })
 export class CourseListComponent implements OnInit {
   // Placeholder values for the table
@@ -48,5 +49,4 @@ export class CourseListComponent implements OnInit {
       this.selectedItem = data;
     });
   }
-
 }
