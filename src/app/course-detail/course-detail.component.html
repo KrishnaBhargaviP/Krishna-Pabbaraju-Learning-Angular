@@ -1,0 +1,14 @@
+<div *ngIf="course" class="course-detail">
+  <h2>Course Details</h2>
+  <p><strong>ID:</strong> {{ course.id }}</p>
+  <p><strong>Subject Code:</strong> {{ course.subjectCode }}</p>
+  <p><strong>Instructor Name:</strong> {{ course.instructorName }}</p>
+  <p><strong>Email:</strong> {{ course.email }}</p>
+  <p><strong>Marks:</strong> {{ course.marks }}</p>
+  <p><strong>Image URL:</strong> {{ course.imageUrl }}</p>
+  <p><strong>Is Admin:</strong> {{ course.isAdmin ? 'Yes' : 'No' }}</p>
+  <button (click)="goBackward()" [disabled]="currentIndex === 0">Previous</button>
+  <button (click)="goForward()" [disabled]="currentIndex === courseList.length - 1">Next</button>
+  <button (click)="goBack()">Back to Student List</button>
+</div>
+

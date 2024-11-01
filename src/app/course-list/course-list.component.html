@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>Student List</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Subject Code</th>
+      <th>Instructor Name</th>
+      <th>Email</th>
+      <th>Marks</th>
+      <th>Image URL</th>
+      <th>Is Admin</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let course of courseList" [routerLink]="['/courses',course.id ]">
+      <td>{{ course.id }}</td>
+      <td>{{ course.subjectCode }}</td>
+      <td>{{ course.instructorName }}</td>
+      <td>{{ course.email }}</td>
+      <td>{{ course.marks }}</td>
+      <td>{{ course.imageUrl }}</td>
+      <td>{{ course.isAdmin ? 'Yes' : 'No' }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
