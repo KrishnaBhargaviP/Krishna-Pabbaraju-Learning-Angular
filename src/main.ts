@@ -9,10 +9,31 @@ import {PageNotFoundComponent} from "./app/page-not-found/page-not-found.compone
 
 const routes: Routes = [
   {path:'', redirectTo: '/courses', pathMatch: 'full'}, //default route
-  { path: 'courses', component: CourseListComponent },
-  { path: 'courses/:id', component: CourseDetailComponent },
-  {path:'modify-course', component: ModifyCourseComponent},
-  {path: '**', component:PageNotFoundComponent}//Wildcard route for a 404 page
+  { path: 'courses', component: CourseListComponent }, // Eagerly loaded route for the course list
+  // Lazy loaded route for course details by ID
+  {
+    path: 'courses/:id',
+    loadComponent: () =>
+      import('./app/course-detail/course-detail.component').then(
+        m => m.CourseDetailComponent
+      )
+  },
+  // Lazy loaded route for modifying a course
+  {
+    path: 'modify-course',
+    loadComponent: () =>
+      import('./app/modify-course/modify-course.component').then(
+        m => m.ModifyCourseComponent
+      )
+  },
+  // Wildcard route for a 404 page (lazy loaded)
+  {
+    path: '**',
+    loadComponent: () =>
+      import('./app/page-not-found/page-not-found.component').then(
+        m => m.PageNotFoundComponent
+      )
+  }
 ];
 bootstrapApplication(AppComponent, {
   providers: [provideRouter(routes)]
