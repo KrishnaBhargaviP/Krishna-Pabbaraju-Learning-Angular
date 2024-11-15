@@ -5,5 +5,7 @@ export interface Course {
   isAdmin?: boolean;
   email: string;
   marks: number;
+  courseCost: number;
+  courseEnrollmentDate: Date;
   imageUrl: string;
 }

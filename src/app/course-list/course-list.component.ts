@@ -2,21 +2,26 @@ import {Component, OnInit} from '@angular/core';
 import {Course} from "../Shared/models/course";
 import {CourseService} from "../Services/course.service";
 import {RouterLink} from "@angular/router";
-import {NgForOf} from "@angular/common";
+import {CurrencyPipe, DatePipe, LowerCasePipe, NgForOf, TitleCasePipe, UpperCasePipe} from "@angular/common";
 
 @Component({
   selector: 'app-course-list',
   standalone: true,
   imports: [
     RouterLink,
-    NgForOf
+    NgForOf,
+    LowerCasePipe,
+    TitleCasePipe,
+    UpperCasePipe,
+    CurrencyPipe,
+    DatePipe
   ],
   templateUrl: './course-list.component.html',
   styleUrl: './course-list.component.scss'
 })
 export class CourseListComponent implements OnInit {
   //Placeholder values for the table
-  displayedColumns:string[]= ['id', 'subjectCode', 'instructorName', 'isAdmin', 'email', 'marks', 'imageUrl'];
+  displayedColumns:string[]= ['id', 'subjectCode', 'instructorName', 'isAdmin', 'email', 'marks', 'courseCost', 'imageUrl'];
   courseList: Course[] = [];
 
   constructor (private courseService: CourseService){

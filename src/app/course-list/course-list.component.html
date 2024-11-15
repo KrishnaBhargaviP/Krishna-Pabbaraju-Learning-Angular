@@ -9,17 +9,21 @@
       <th>Email</th>
       <th>Marks</th>
       <th>Image URL</th>
+      <td>Course Cost</td>
+      <th>Enrollment Date</th>
       <th>Is Admin</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let course of courseList" [routerLink]="['/courses',course.id ]">
       <td>{{ course.id }}</td>
-      <td>{{ course.subjectCode }}</td>
-      <td>{{ course.instructorName }}</td>
-      <td>{{ course.email }}</td>
+      <td>{{ course.subjectCode | uppercase}}</td>
+      <td>{{ course.instructorName | titlecase}}</td>
+      <td>{{ course.email | lowercase}}</td>
       <td>{{ course.marks }}</td>
       <td>{{ course.imageUrl }}</td>
+      <td>{{ course.courseCost | currency:"USD" }}</td>
+      <td>{{ course.courseEnrollmentDate | date: 'longDate' }}</td>
       <td>{{ course.isAdmin ? 'Yes' : 'No' }}</td>
     </tr>
     </tbody>
