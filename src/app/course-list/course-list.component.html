@@ -18,7 +18,7 @@
     <tr *ngFor="let course of courseList" [routerLink]="['/courses',course.id ]">
       <td>{{ course.id }}</td>
       <td>{{ course.subjectCode | uppercase}}</td>
-      <td>{{ course.instructorName | titlecase}}</td>
+      <td [innerHTML]="course.instructorName | highlightAdmin:course.isAdmin"></td>
       <td>{{ course.email | lowercase}}</td>
       <td>{{ course.marks }}</td>
       <td>{{ course.imageUrl }}</td>
