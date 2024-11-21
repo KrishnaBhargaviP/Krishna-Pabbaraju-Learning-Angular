@@ -2,14 +2,19 @@ import {Component, OnInit} from '@angular/core';
 import {Course} from "../Shared/models/course";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CourseService} from "../Services/course.service";
-import {NgIf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
+import {HoverHighlightDirective} from "../directives/hover-highlight.directive";
+import {TextColourDirective} from "../directives/text-colour.directive";
 
 
 @Component({
   selector: 'app-course-detail',
   standalone: true,
   imports: [
-    NgIf
+    NgIf,
+    HoverHighlightDirective,
+    NgForOf,
+    TextColourDirective
   ],
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.scss'

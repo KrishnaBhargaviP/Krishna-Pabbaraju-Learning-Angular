@@ -3,12 +3,14 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {Course} from "../Shared/models/course";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CourseService} from "../Services/course.service";
+import {AutoFocusDirective} from "../directives/auto-focus.directive";
 
 @Component({
   selector: 'app-modify-course',
   standalone: true,
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AutoFocusDirective
   ],
   templateUrl: './modify-course.component.html',
   styleUrl: './modify-course.component.scss'
