@@ -15,7 +15,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let course of courseList" [routerLink]="['/courses',course.id ]">
+    <tr *ngFor="let course of courseList" [routerLink]="['/courses',course.id ]" appHoverHighlight="'lightblue'">>
       <td>{{ course.id }}</td>
       <td>{{ course.subjectCode | uppercase}}</td>
       <td [innerHTML]="course.instructorName | highlightAdmin:course.isAdmin"></td>

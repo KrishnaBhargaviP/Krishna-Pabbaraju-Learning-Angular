@@ -3,6 +3,7 @@ import {Course} from "../Shared/models/course";
 import {CourseService} from "../Services/course.service";
 import {RouterLink} from "@angular/router";
 import {CurrencyPipe, DatePipe, LowerCasePipe, NgForOf, TitleCasePipe, UpperCasePipe} from "@angular/common";
+import {HoverHighlightDirective} from "../directives/hover-highlight.directive";
 import {HighlightAdminPipe} from "../highlight-admin.pipe";
 
 @Component({
@@ -16,7 +17,8 @@ import {HighlightAdminPipe} from "../highlight-admin.pipe";
     UpperCasePipe,
     CurrencyPipe,
     DatePipe,
-    HighlightAdminPipe
+    HighlightAdminPipe,
+    HoverHighlightDirective
   ],
   templateUrl: './course-list.component.html',
   styleUrl: './course-list.component.scss'
