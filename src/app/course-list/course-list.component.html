@@ -21,7 +21,6 @@
       <td [innerHTML]="course.instructorName | highlightAdmin:course.isAdmin"></td>
       <td>{{ course.email | lowercase}}</td>
       <td>{{ course.marks }}</td>
-      <td>{{ course.imageUrl }}</td>
       <td>{{ course.courseCost | currency:"USD" }}</td>
       <td>{{ course.courseEnrollmentDate | date: 'longDate' }}</td>
       <td>{{ course.isAdmin ? 'Yes' : 'No' }}</td>
