@@ -5,10 +5,19 @@ import {RouterLink} from "@angular/router";
 import {CurrencyPipe, DatePipe, LowerCasePipe, NgForOf, TitleCasePipe, UpperCasePipe} from "@angular/common";
 import {HoverHighlightDirective} from "../directives/hover-highlight.directive";
 import {HighlightAdminPipe} from "../highlight-admin.pipe";
+import {
+  MatCell,
+  MatCellDef, MatColumnDef,
+  MatHeaderCell,
+  MatHeaderCellDef, MatHeaderRow,
+  MatHeaderRowDef, MatRow,
+  MatRowDef,
+  MatTable
+} from "@angular/material/table";
+import {MatPaginator} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-course-list',
-  standalone: true,
   imports: [
     RouterLink,
     NgForOf,
@@ -18,7 +27,18 @@ import {HighlightAdminPipe} from "../highlight-admin.pipe";
     CurrencyPipe,
     DatePipe,
     HighlightAdminPipe,
-    HoverHighlightDirective
+    HoverHighlightDirective,
+    MatTable,
+    MatHeaderCellDef,
+    MatCellDef,
+    MatRowDef,
+    MatHeaderRowDef,
+    MatHeaderCell,
+    MatColumnDef,
+    MatCell,
+    MatHeaderRow,
+    MatRow,
+    MatPaginator
   ],
   templateUrl: './course-list.component.html',
   styleUrl: './course-list.component.scss'

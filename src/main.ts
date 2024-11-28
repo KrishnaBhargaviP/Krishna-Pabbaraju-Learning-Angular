@@ -7,6 +7,10 @@ import { CourseDetailComponent } from './app/course-detail/course-detail.compone
 import { ModifyCourseComponent } from './app/modify-course/modify-course.component';
 import { PageNotFoundComponent } from './app/page-not-found/page-not-found.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {MatTableModule} from "@angular/material/table";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
+import { provideServiceWorker } from "@angular/service-worker";
 
 const routes: Routes = [
   { path: '', redirectTo: '/courses', pathMatch: 'full' },
@@ -35,5 +39,16 @@ const routes: Routes = [
 ];
 
 bootstrapApplication(AppComponent, {
-  providers: [provideRouter(routes), provideAnimationsAsync()],
-}).then(() => console.log('Bootstrap successful'));
+  providers: [
+    provideHttpClient(), // Ensure that HTTP interceptors are properly configured
+    provideRouter(routes),
+    importProvidersFrom(HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 1 })),
+    provideAnimationsAsync(), // Import providers dynamically
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule, provideServiceWorker('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
+  ],
+}).catch((err) => console.error(err));

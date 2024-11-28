@@ -4,13 +4,23 @@ import {Course} from "../Shared/models/course";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CourseService} from "../Services/course.service";
 import {AutoFocusDirective} from "../directives/auto-focus.directive";
+import {MatCheckbox, MatCheckboxModule} from "@angular/material/checkbox";
+import {MatFormField, MatFormFieldModule, MatLabel} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
 
 @Component({
   selector: 'app-modify-course',
-  standalone: true,
   imports: [
     ReactiveFormsModule,
-    AutoFocusDirective
+    AutoFocusDirective,
+    MatCheckbox,
+    MatLabel,
+    MatFormField,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatButtonModule
   ],
   templateUrl: './modify-course.component.html',
   styleUrl: './modify-course.component.scss'

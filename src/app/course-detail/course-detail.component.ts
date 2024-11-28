@@ -5,16 +5,43 @@ import {CourseService} from "../Services/course.service";
 import {NgForOf, NgIf} from "@angular/common";
 import {HoverHighlightDirective} from "../directives/hover-highlight.directive";
 import {TextColourDirective} from "../directives/text-colour.directive";
+import {MatCard, MatCardContent, MatCardHeader, MatCardModule} from "@angular/material/card";
+import {
+  MatCell,
+  MatCellDef,
+  MatColumnDef,
+  MatHeaderCell,
+  MatHeaderCellDef,
+  MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef,
+  MatTable
+} from "@angular/material/table";
+import {MatButton} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @Component({
   selector: 'app-course-detail',
-  standalone: true,
   imports: [
     NgIf,
     HoverHighlightDirective,
     NgForOf,
-    TextColourDirective
+    TextColourDirective,
+    MatCard,
+    MatCardHeader,
+    MatCardContent,
+    MatTable,
+    MatColumnDef,
+    MatHeaderCell,
+    MatHeaderCellDef,
+    MatCellDef,
+    MatCell,
+    MatHeaderRow,
+    MatHeaderRowDef,
+    MatRowDef,
+    MatRow,
+    MatButton,
+    MatCardModule,
+    MatIconModule
   ],
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.scss'
