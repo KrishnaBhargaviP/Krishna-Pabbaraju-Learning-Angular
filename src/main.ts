@@ -6,6 +6,7 @@ import { CourseListComponent } from './app/course-list/course-list.component';
 import { CourseDetailComponent } from './app/course-detail/course-detail.component';
 import { ModifyCourseComponent } from './app/modify-course/modify-course.component';
 import { PageNotFoundComponent } from './app/page-not-found/page-not-found.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 const routes: Routes = [
   { path: '', redirectTo: '/courses', pathMatch: 'full' },
@@ -34,5 +35,5 @@ const routes: Routes = [
 ];
 
 bootstrapApplication(AppComponent, {
-  providers: [provideRouter(routes)],
+  providers: [provideRouter(routes), provideAnimationsAsync()],
 }).then(() => console.log('Bootstrap successful'));
