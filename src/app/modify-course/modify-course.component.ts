@@ -23,6 +23,7 @@ import {MatButtonModule} from "@angular/material/button";
     MatButtonModule
   ],
   templateUrl: './modify-course.component.html',
+  standalone: true,
   styleUrl: './modify-course.component.scss'
 })
 export class ModifyCourseComponent implements OnInit{

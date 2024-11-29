@@ -17,6 +17,7 @@ import {
 } from "@angular/material/table";
 import {MatButton} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import {error} from "@angular/compiler-cli/src/transformers/util";
 
 
 @Component({
@@ -44,6 +45,7 @@ import {MatIconModule} from "@angular/material/icon";
     MatIconModule
   ],
   templateUrl: './course-detail.component.html',
+  standalone: true,
   styleUrl: './course-detail.component.scss'
 })
 export class CourseDetailComponent implements OnInit{
@@ -95,4 +97,5 @@ export class CourseDetailComponent implements OnInit{
   }
 
 
+  protected readonly error = error;
 }

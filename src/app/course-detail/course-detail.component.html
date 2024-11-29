@@ -1,25 +1,48 @@
 <div *ngIf="course" class="course-detail">
-  <h2>Course Details</h2>
-  <p><strong>ID:</strong> {{ course.id }}</p>
-  <p>
-    <strong>Subject Code:</strong>
-    <span appHoverHighlight>{{ course.subjectCode }}</span>
-  </p>
-  <p>
-    <strong>Instructor Name:</strong> {{ course.instructorName }}
-  </p>
-  <p><strong>Email:</strong> {{ course.email }}</p>
-  <p>
-    <strong>Marks:</strong>
-    <span [appTextColour]="course.marks">{{ course.marks }}</span>
-  </p>
-  <p><strong>Image URL:</strong> {{ course.imageUrl }}</p>
+  <!-- Course Details Card -->
+  <mat-card class="course-card">
+    <mat-card-header>
+      <mat-card-title>Course Details</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>ID:</strong> {{ course.id }}</p>
+      <p>
+        <strong>Subject Code:</strong>
+        <span appHoverHighlight>{{ course.subjectCode }}</span>
+      </p>
+      <p>
+        <strong>Instructor Name:</strong> {{ course.instructorName }}
+      </p>
+      <p><strong>Email:</strong> {{ course.email }}</p>
+      <p>
+        <strong>Marks:</strong>
+        <span [appTextColor]="course.marks">{{ course.marks }}</span>
+      </p>
+      <p><strong>Course Cost:</strong> {{ course.courseCost | currency: 'CAD': 'symbol-narrow' }}</p>
+      <p>
+        <strong>Enrollment Date:</strong>
+        {{ course.courseEnrollmentDate | date: 'mediumDate' }}
+      </p>
+      <p><strong>Image URL:</strong> <a [href]="course.imageUrl" target="_blank">{{ course.imageUrl }}</a></p>
+      <p><strong>Is Admin:</strong> {{ course.isAdmin ? 'Yes' : 'No' }}</p>
+    </mat-card-content>
+  </mat-card>
 
-
-
-  <p><strong>Is Admin:</strong> {{ course.isAdmin ? 'Yes' : 'No' }}</p>
-  <button (click)="goBackward()" [disabled]="currentIndex === 0">Previous</button>
-  <button (click)="goForward()" [disabled]="currentIndex === courseList.length - 1">Next</button>
-  <button (click)="goBack()">Back to Student List</button>
+  <!-- Navigation Buttons -->
+  <div class="navigation-buttons">
+    <button mat-raised-button color="primary" (click)="goBackward()" [disabled]="currentIndex === 0">
+      <mat-icon>arrow_back</mat-icon> Previous
+    </button>
+    <button mat-raised-button color="primary" (click)="goForward()" [disabled]="currentIndex === courseList.length - 1">
+      Next <mat-icon>arrow_forward</mat-icon>
+    </button>
+    <button mat-raised-button color="accent" (click)="goBack()">
+      Back to Course List
+    </button>
+  </div>
 </div>
 
+<!-- Error Display -->
+<div *ngIf="error" mat-card class="error-card">
+  <mat-card-content>{{ error }}</mat-card-content>
+</div>

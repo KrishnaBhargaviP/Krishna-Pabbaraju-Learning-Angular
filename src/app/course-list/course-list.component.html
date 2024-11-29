@@ -1,31 +1,64 @@
-<div class="container">
-  <h2>Student List</h2>
-  <table>
-    <thead>
-    <tr>
-      <th>ID</th>
-      <th>Subject Code</th>
-      <th>Instructor Name</th>
-      <th>Email</th>
-      <th>Marks</th>
-      <th>Image URL</th>
-      <td>Course Cost</td>
-      <th>Enrollment Date</th>
-      <th>Is Admin</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let course of courseList" [routerLink]="['/courses',course.id ]" appHoverHighlight="'lightblue'">>
-      <td>{{ course.id }}</td>
-      <td>{{ course.subjectCode | uppercase}}</td>
-      <td [innerHTML]="course.instructorName | highlightAdmin:course.isAdmin"></td>
-      <td>{{ course.email | lowercase}}</td>
-      <td>{{ course.marks }}</td>
-      <td>{{ course.courseCost | currency:"USD" }}</td>
-      <td>{{ course.courseEnrollmentDate | date: 'longDate' }}</td>
-      <td>{{ course.isAdmin ? 'Yes' : 'No' }}</td>
-    </tr>
-    </tbody>
+<div class="mat-container">
+  <h2>Course List</h2>
+
+  <!-- Material Table -->
+  <table mat-table [dataSource]="courseList" class="mat-elevation-z8">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let course">{{ course.id }}</td>
+    </ng-container>
+
+    <!-- Subject Code Column -->
+    <ng-container matColumnDef="subjectCode">
+      <th mat-header-cell *matHeaderCellDef>Subject Code</th>
+      <td mat-cell *matCellDef="let course">{{ course.subjectCode }}</td>
+    </ng-container>
+
+    <!-- Instructor Name Column -->
+    <ng-container matColumnDef="instructorName">
+      <th mat-header-cell *matHeaderCellDef>Instructor</th>
+      <td mat-cell *matCellDef="let course">{{ course.instructorName }}</td>
+    </ng-container>
+
+    <!-- Marks Column -->
+    <ng-container matColumnDef="marks">
+      <th mat-header-cell *matHeaderCellDef>Marks</th>
+      <td mat-cell *matCellDef="let course">{{ course.marks }}</td>
+    </ng-container>
+
+    <!-- Course Cost Column -->
+    <ng-container matColumnDef="courseCost">
+      <th mat-header-cell *matHeaderCellDef>Course Cost</th>
+      <td mat-cell *matCellDef="let course">{{ course.courseCost | currency: 'CAD': 'symbol-narrow' }}</td>
+    </ng-container>
+
+    <!-- Enrollment Date Column -->
+    <ng-container matColumnDef="courseEnrollmentDate">
+      <th mat-header-cell *matHeaderCellDef>Enrollment Date</th>
+      <td mat-cell *matCellDef="let course">{{ course.courseEnrollmentDate | date: 'mediumDate' }}</td>
+    </ng-container>
+
+    <!-- Admin Column -->
+    <ng-container matColumnDef="isAdmin">
+      <th mat-header-cell *matHeaderCellDef>Admin</th>
+      <td mat-cell *matCellDef="let course">{{ course.isAdmin ? 'Yes' : 'No' }}</td>
+    </ng-container>
+
+    <!-- Row -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let course; columns: displayedColumns"
+      [routerLink]="['/courses', course.id]"
+      [appHoverHighlight]="'lightblue'"
+    ></tr>
   </table>
 
+  <!-- Pagination -->
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+
+  <!-- Error Message -->
+  <div *ngIf="error" class="error mat-error">{{ error }}</div>
 </div>

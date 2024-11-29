@@ -1,31 +1,16 @@
-.container {
-  margin: 20px;
+.mat-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; // Space between form fields
 }
-
-h2 {
-  text-align: center;
+.form-field { width: 100%;
 }
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0;
+.checkbox { margin: 1rem 0;
 }
-
-th, td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
+.button-group { display: flex; gap: 1rem;
 }
-
-th {
-  background-color: #f4f4f4;
-}
-
-tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-tr:hover {
-  background-color: #f1f1f1;
+.mat-error {
+  color: red; font-weight: bold; margin-top: 1rem;
 }
