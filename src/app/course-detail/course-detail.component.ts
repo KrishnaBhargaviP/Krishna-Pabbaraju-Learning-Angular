@@ -1,27 +1,29 @@
-import {Component, OnInit} from '@angular/core';
-import {Course} from "../Shared/models/course";
-import {ActivatedRoute, Router} from "@angular/router";
-import {CourseService} from "../Services/course.service";
-import {NgForOf, NgIf} from "@angular/common";
-import {HoverHighlightDirective} from "../directives/hover-highlight.directive";
-import {TextColourDirective} from "../directives/text-colour.directive";
-import {MatCard, MatCardContent, MatCardHeader, MatCardModule} from "@angular/material/card";
+import { Component, OnInit } from '@angular/core';
+import { Course } from "../Shared/models/course";
+import { ActivatedRoute, Router } from "@angular/router";
+import { CourseService } from "../Services/course.service";
+import { CurrencyPipe, DatePipe, NgForOf, NgIf } from "@angular/common";
+import { HoverHighlightDirective } from "../directives/hover-highlight.directive";
+import { TextColourDirective } from "../directives/text-colour.directive";
+import { MatCard, MatCardContent, MatCardHeader, MatCardModule } from "@angular/material/card";
 import {
   MatCell,
   MatCellDef,
   MatColumnDef,
   MatHeaderCell,
   MatHeaderCellDef,
-  MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef,
+  MatHeaderRow,
+  MatHeaderRowDef,
+  MatRow,
+  MatRowDef,
   MatTable
 } from "@angular/material/table";
-import {MatButton} from "@angular/material/button";
-import {MatIconModule} from "@angular/material/icon";
-import {error} from "@angular/compiler-cli/src/transformers/util";
-
+import { MatButton } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
 
 @Component({
   selector: 'app-course-detail',
+  standalone: true,
   imports: [
     NgIf,
     HoverHighlightDirective,
@@ -42,60 +44,72 @@ import {error} from "@angular/compiler-cli/src/transformers/util";
     MatRow,
     MatButton,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    CurrencyPipe,
+    DatePipe
   ],
   templateUrl: './course-detail.component.html',
-  standalone: true,
-  styleUrl: './course-detail.component.scss'
+  styleUrls: ['./course-detail.component.scss']
 })
-export class CourseDetailComponent implements OnInit{
-  //Needs to be | undef because there wont always be a student thats clicked on
-  course: Course | undefined; //The student to display
-  courseList: Course[] = [];// to store the list of students
-  currentIndex: number = 0;//to track the current index
+export class CourseDetailComponent implements OnInit {
+  course: Course | undefined; // The course to display
+  courseList: Course[] = []; // To store the list of courses
+  currentIndex: number = 0; // To track the current index
+  error: string | null = null; // For error handling
 
   constructor(
     private route: ActivatedRoute,
     private courseService: CourseService,
     private router: Router
   ) {}
-//rewrite onInit to get the list of students and the current student
-  ngOnInit(): void {
-    this.courseService.getCourses().subscribe(courses => {
-      this.courseList = courses;
 
-      // Subscribe to paramMap changes to actually see the page changing
-      //If we dont do this, the URL will change but the view will not
-      this.route.paramMap.subscribe(params => {
-        const id = Number(params.get('id'));
-        if (id) {
-          this.currentIndex = this.courseList.findIndex(course => course.id === id);
-          this.course = this.courseList[this.currentIndex];
-        }
-      });
+  ngOnInit(): void {
+    // Fetch the list of courses
+    this.courseService.getCourses().subscribe({
+      next: (courses) => {
+        this.courseList = courses;
+
+        // Subscribe to paramMap changes for dynamic URL updates
+        this.route.paramMap.subscribe(params => {
+          const id = Number(params.get('id'));
+          if (id) {
+            this.currentIndex = this.courseList.findIndex(course => course.id === id);
+            if (this.currentIndex !== -1) {
+              this.course = this.courseList[this.currentIndex];
+            } else {
+              this.error = 'Course not found.';
+              this.course = undefined;
+            }
+          }
+        });
+      },
+      error: (err) => {
+        this.error = 'Error fetching courses.';
+        console.error('Error fetching courses:', err);
+      }
     });
   }
 
-//function to go back to student-list view
+  // Navigate back to the course list view
   goBack(): void {
     this.router.navigate(['/courses']);
   }
 
-//function to move foward through array with overflow protection
+  // Move forward through the array with overflow protection
   goForward(): void {
     if (this.currentIndex < this.courseList.length - 1) {
       this.currentIndex++;
+      this.course = this.courseList[this.currentIndex];
       this.router.navigate(['/courses', this.courseList[this.currentIndex].id]);
     }
   }
-//function to move backward through array with overflow protection
+
+  // Move backward through the array with overflow protection
   goBackward(): void {
     if (this.currentIndex > 0) {
       this.currentIndex--;
+      this.course = this.courseList[this.currentIndex];
       this.router.navigate(['/courses', this.courseList[this.currentIndex].id]);
     }
   }
-
-
-  protected readonly error = error;
 }

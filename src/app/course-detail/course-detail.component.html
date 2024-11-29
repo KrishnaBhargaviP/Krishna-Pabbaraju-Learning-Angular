@@ -16,7 +16,8 @@
       <p><strong>Email:</strong> {{ course.email }}</p>
       <p>
         <strong>Marks:</strong>
-        <span [appTextColor]="course.marks">{{ course.marks }}</span>
+<!--        <span [appTextColor]="course.marks">{{ course.marks }}</span>-->
+        <span>{{ course.marks }}</span>
       </p>
       <p><strong>Course Cost:</strong> {{ course.courseCost | currency: 'CAD': 'symbol-narrow' }}</p>
       <p>
