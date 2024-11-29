@@ -52,9 +52,6 @@ bootstrapApplication(AppComponent, {
     provideAnimationsAsync(), // Import providers dynamically
     MatTableModule,
     MatButtonModule,
-    MatIconModule, provideServiceWorker('ngsw-worker.js', {
-      enabled: !isDevMode(),
-      registrationStrategy: 'registerWhenStable:30000'
-    }),
+    MatIconModule,
   ],
 }).catch((err) => console.error(err));
