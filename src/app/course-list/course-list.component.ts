@@ -47,7 +47,7 @@ import {MatPaginator} from "@angular/material/paginator";
 })
 export class CourseListComponent implements OnInit {
   //Placeholder values for the table
-  displayedColumns:string[]= ['id', 'subjectCode', 'instructorName', 'isAdmin', 'email', 'marks', 'courseCost', 'imageUrl'];
+  displayedColumns:string[]= ['id', 'subjectCode', 'instructorName', 'isAdmin', 'courseEmail', 'marks', 'courseCost'];
   course: Course | undefined;
   courseList: Course[] = [];
   currentIndex: number = 0;//to track the current index
@@ -72,7 +72,7 @@ export class CourseListComponent implements OnInit {
       next: (courses: Course[]) => {
         this.courseList = courses;
         this.error = null; // Clear any previous errors
-
+        this.dataSource.data = courses;
         // Subscribe to paramMap changes to update the page view
         this.route.paramMap.subscribe(params => {
           const id = Number(params.get('id'));

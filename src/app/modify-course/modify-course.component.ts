@@ -43,7 +43,7 @@ export class ModifyCourseComponent implements OnInit{
       instructorName: ['', Validators.required],
       email: [''],
       marks: [''],
-      imageUrl: [''],
+      imageURL : [''],
       isAdmin: [false]
     });
   }
