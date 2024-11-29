@@ -98,9 +98,9 @@ export class InMemoryDataService implements InMemoryDbService {
         const randomBaseCourse = baseCourses[i % baseCourses.length];
         const newCourse: Course = {
           id: id++,
-          subjectCode: `${randomBaseCourse.subjectCode}-${id}`,
-          instructorName: `Instructor ${id}`,
-          email: `instructor${id}@myscc.ca`,
+          subjectCode: `${randomBaseCourse.subjectCode}`,
+          instructorName: `${randomBaseCourse.instructorName}`,
+          email: `${randomBaseCourse.email}`,
           marks: Math.floor(Math.random() * 101), // Random marks between 0 and 100
           courseCost: randomBaseCourse.courseCost + 100,
           courseEnrollmentDate: new Date(),
@@ -116,7 +116,7 @@ export class InMemoryDataService implements InMemoryDbService {
       ...courses,
       ...generateAdditionalCourses(30 - courses.length, courses),
     ];
-
+    console.log("courses",allCourses)
     return { courses: allCourses };
   }
 }
