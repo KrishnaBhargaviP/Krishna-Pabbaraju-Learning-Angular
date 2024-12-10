@@ -29,11 +29,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Commands
 
 # Reactive forms: ng add @angular/forms
-# simulate a web server for testing purposes -- npm install angular-in-memory-web-api --save
-# Custom Pipe: ng generate pipe pipeName or ng generate pipe pipes/fullName 
-# directive: ng g d directives/HoverHighlight or Ng g d directives/disableButton
-# Material Design: Ng add @angular/material
-#  Progressive Web Apps (PWA):ng add @angular/pwa
-# Build your app for production -- ng build --configuration production
+simulate a web server for testing purposes -- npm install angular-in-memory-web-api --save
+Custom Pipe: ng generate pipe pipeName or ng generate pipe pipes/fullName 
+directive: ng g d directives/HoverHighlight or Ng g d directives/disableButton
+Material Design: Ng add @angular/material
+Progressive Web Apps (PWA):ng add @angular/pwa
+Build your app for production -- ng build --configuration production
 
 
