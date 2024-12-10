@@ -25,3 +25,15 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Commands
+
+# Reactive forms: ng add @angular/forms
+# simulate a web server for testing purposes -- npm install angular-in-memory-web-api --save
+# Custom Pipe: ng generate pipe pipeName or ng generate pipe pipes/fullName 
+# directive: ng g d directives/HoverHighlight or Ng g d directives/disableButton
+# Material Design: Ng add @angular/material
+#  Progressive Web Apps (PWA):ng add @angular/pwa
+# Build your app for production -- ng build --configuration production
+
+
