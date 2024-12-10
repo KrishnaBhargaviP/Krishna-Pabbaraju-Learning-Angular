@@ -34,6 +34,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 `directive: ng g d directives/HoverHighlight or Ng g d directives/disableButton`
 `Material Design: Ng add @angular/material`
 `Progressive Web Apps (PWA):ng add @angular/pwa`
-`Build your app for production -- ng build --configuration production`
+`Build your app for production -- ng build --configuration production` 
+`npm install -g http-server`
+`http-server -o`
+
 
 
