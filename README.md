@@ -37,6 +37,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 `Build your app for production -- ng build --configuration production` 
 `npm install -g http-server`
 `http-server -o`
+`https://github.com/mathewhaug/MAD307F24FinalReview/tree/Final-Review-Solution`
 
 
 
