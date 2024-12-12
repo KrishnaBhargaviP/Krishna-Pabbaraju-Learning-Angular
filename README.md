@@ -39,6 +39,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 `http-server -o`
 `https://github.com/mathewhaug/MAD307F24FinalReview/tree/Final-Review-Solution`
 `https://github.com/mathewhaug/My-First-Angular-App-f24`
+`ng g component studentList`
 
 
 
